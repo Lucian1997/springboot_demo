@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.arshcoo.demo.dao.EmployeeDao">
+    <select id="getEmployee"  resultType="com.arshcoo.demo.dto.EmployeeDto">
+        select * from t_employee
+    </select>
+    <select id="queryEmployeeByAccountId" parameterType="com.arshcoo.demo.dto.EmployeeDto" resultType="com.arshcoo.demo.dto.EmployeeDto">
+        select * from t_employee where accountId=#{accountId}
+    </select>
+    <insert id="addEmployee" parameterType="com.arshcoo.demo.dto.EmployeeDto">
+        insert into t_employee  (accountId,name,work,position,area) values (#{accountId},#{name},#{work},#{position},#{area})
+    </insert>
+    <delete id="deleteEmployee" parameterType="com.arshcoo.demo.dto.EmployeeDto" >
+        delete from t_employee where accountId=#{accountId}
+    </delete>
+    <select id="queryEmployee" parameterType="com.arshcoo.demo.dto.EmployeeDto" resultType="com.arshcoo.demo.dto.EmployeeDto">
+        select * from t_employee where id=#{id} order by id desc
+    </select>
+    <update id="updateEmployee" parameterType="com.arshcoo.demo.dto.EmployeeDto" >
+        update t_employee
+        set work=#{work},position=#{position},area=#{area}
+        where id=#{id}
+    </update>
+    <select id="queryEmployeeByAreaPosition"  resultType="com.arshcoo.demo.dto.EmployeeDto" parameterType="com.arshcoo.demo.dto.EmployeeDto">
+        select * from t_employee where area=#{area} and work=#{work}
+    </select>
+    <select id="getArea" resultType="String">
+        select distinct area from t_employee
+    </select>
+    <select id="getWork" resultType="String">
+        select distinct work from t_employee
+    </select>
+    <select id="queryEmployeeByArea" parameterType="String" resultType="com.arshcoo.demo.dto.EmployeeDto">
+        select * from t_employee where area=#{area}
+    </select>
+    <select id="queryEmployeeByPosition" parameterType="String" resultType="com.arshcoo.demo.dto.EmployeeDto">
+        select * from t_employee where work=#{work}
+    </select>
+
+</mapper>

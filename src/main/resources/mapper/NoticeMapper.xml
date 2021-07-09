@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.arshcoo.demo.dao.NoticeDao" >
+    <select id="getNotices" resultType="com.arshcoo.demo.dto.NoticeDto">
+        select * from t_notices order by id desc
+    </select>
+    <delete id="delete" parameterType="com.arshcoo.demo.dto.NoticeDto">
+        delete from t_notices where id = #{id}
+    </delete>
+    <select id="queryNotice" resultType="com.arshcoo.demo.dto.NoticeDto" parameterType="com.arshcoo.demo.dto.NoticeDto">
+        select * from t_notices where id = #{id}
+    </select>
+    <insert id="addNotice" parameterType="com.arshcoo.demo.dto.NoticeDto">
+       insert into t_notices(title,context,date) values (#{title},#{context},#{date})
+   </insert>
+</mapper>

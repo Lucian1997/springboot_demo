@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.arshcoo.demo.dao.ProjectDao">
+    <select id="findAll" resultType="com.arshcoo.demo.dto.ProjectDto" parameterType="com.arshcoo.demo.dto.ProjectDto">
+      select * from t_projects order by id desc
+   </select>
+    <insert id="addProject" parameterType="com.arshcoo.demo.dto.ProjectDto">
+       insert into t_projects(account_id,principal,project,context,date) values (#{account_id},#{principal},#{project},#{context},#{date})
+   </insert>
+    <delete id="deleteProject" parameterType="com.arshcoo.demo.dto.ProjectDto">
+       delete from t_projects where id = #{id}
+    </delete>
+    <update id="updateProject" parameterType="com.arshcoo.demo.dto.ProjectDto">
+      update t_projects
+      set  project =#{project},context =#{context}
+      where id=#{id}
+    </update>
+    <select id="selectId" resultType="com.arshcoo.demo.dto.ProjectDto" >
+      select * from t_projects where id=#{id}
+    </select>
+    <select id="findAllByPrincipal" parameterType="com.arshcoo.demo.dto.ProjectDto" resultType="com.arshcoo.demo.dto.ProjectDto">
+        select * from t_projects where account_id=#{account_id} order by id desc
+    </select>
+</mapper>

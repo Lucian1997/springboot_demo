@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.arshcoo.demo.dao.AccountDao" >
+    <select id="login" resultType="com.arshcoo.demo.dto.AccountDto" parameterType="com.arshcoo.demo.dto.AccountDto">
+        select * from t_accounts where username=#{username} and password=#{password}
+    </select>
+    <select id="getAccounts" resultType="com.arshcoo.demo.dto.AccountDto">
+        select * from t_accounts where power!="admin" order by id desc
+    </select>
+    <insert id="register" parameterType="com.arshcoo.demo.dto.AccountDto" useGeneratedKeys="true" keyProperty="id">
+        insert into t_accounts(name,username,password,power,projectNum,noticeNum) values (#{name},#{username},#{password},#{power},0,0)
+    </insert>
+    <delete id="delete" parameterType="com.arshcoo.demo.dto.AccountDto">
+        delete from t_accounts where id = #{id}
+    </delete>
+    <select id="queryAccount" resultType="com.arshcoo.demo.dto.AccountDto" parameterType="com.arshcoo.demo.dto.AccountDto">
+        select * from t_accounts where id = #{id}
+    </select>
+    <update id="modify" parameterType="com.arshcoo.demo.dto.AccountDto">
+        update t_accounts
+        set password = #{password},power = #{power}
+        where id = #{id}
+    </update>
+    <update id="updateNotices" >
+        update t_accounts set noticeNum = noticeNum+1
+    </update>
+    <update id="clearNotices" parameterType="com.arshcoo.demo.dto.AccountDto">
+        update t_accounts set noticeNum = 0 where id=#{id}
+    </update>
+    <update id="updateProjectsNum" parameterType="com.arshcoo.demo.dto.AccountDto">
+        update t_accounts set projectNum = projectNum+1 where id=#{id}
+    </update>
+    <update id="clearProjectsNum" parameterType="com.arshcoo.demo.dto.AccountDto">
+        update t_accounts set projectNum = 0 where id=#{id}
+    </update>
+</mapper>

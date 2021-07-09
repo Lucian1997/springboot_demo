@@ -1,0 +1,50 @@
+/*错误消息提示框*/
+.title{
+    background-color: #EEEEEE;
+    position: absolute;
+    top: 46%;
+    left: 44%;
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 800;
+}
+/*轮播*/
+.carouselCss{
+    align: center;
+}
+
+/*分页*/
+.active {
+    font-size: 18px;
+    background-color: #F1EEEE;
+}
+
+#nav {
+    height: 40px;
+    border-top: #000000 2px solid;
+    border-bottom: #000000 2px solid;
+    background-color: #FFFFFF;
+}
+
+#nav ul {
+    list-style: none;
+    margin-left: 50px;
+}
+
+#nav li {
+    display: inline;
+    line-height: 40px;
+    float: left
+}
+
+#nav a {
+    color: #0a0a0a;
+    text-decoration: none;
+    padding: 10px 10px;
+}
+
+#nav a:hover {
+    background-color: #eeeeee;
+}
